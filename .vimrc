@@ -440,6 +440,7 @@ inoremap <silent> <expr> <C-e> (pumvisible() ? "\<C-e>" : "\<End>")
 noremap! <C-d> <Del>
 
 " {{{ QFixHowm.vim
+let QFixHowm_Key = 'g'
 if has('win32')
   let howm_dir             = 'c:/dropbox/My Dropbox/howm'
   let QFixHowm_MruFile     = 'c:/dropbox/My Dropbox/howm/.howm-mru'
@@ -452,7 +453,7 @@ let howm_fileencoding    = 'utf-8'
 let howm_fileformat      = 'unix'
 let QFixHowm_MruFileMax = 50
 let QFixHowm_Title = '='
-let disable_MyQFix = 1
+" let disable_MyQFix = 1
 
 "タイトルに何も書かれていない場合、エントリ内から適当な文を探して設定する。
 ""文字数は半角換算で最大 QFixHowm_Replace_Title_len 文字まで使用する。0なら何もしない。
