@@ -1,38 +1,7 @@
 scriptencoding utf-8
 
-" {{{ Load bundle
-" http://d.hatena.ne.jp/ns9tks/20090613/1244884957
-function! s:enumDirs(dir)
-  return map(split(glob(fnamemodify(a:dir, ':p') . '*/'), "\n"),
-        \    'fnamemodify(v:val, '':h'')')
-endfunction
-
-function! s:isVimRuntimeDir(dir)
-  return 1
-  " return fnamemodify(a:dir, ':t') =~ '^vimfiles\|^vim-'
-endfunction
-
-function! s:enumVimRuntimeDirs(dirRepos)
-  let runtimeDirs = []
-  for dir in s:enumDirs(a:dirRepos)
-    if s:isVimRuntimeDir(dir)
-      call add(runtimeDirs, dir)
-    else
-      let runtimeDirs += filter(s:enumDirs(dir), 's:isVimRuntimeDir(v:val)')
-    endif
-  endfor
-  return runtimeDirs
-endfunction
-
-function! s:initRuntimePath(dirsRuntime)
-  let dirsAfter = map(copy(a:dirsRuntime), 'v:val . "/after"')
-  let &runtimepath = join(a:dirsRuntime + [&runtimepath] + dirsAfter, ',')
-endfunction
-
-let s:dirRepos = $HOME."/.vim/bundle"
-let s:dirsRuntime = s:enumVimRuntimeDirs(s:dirRepos)
-call s:initRuntimePath(s:dirsRuntime)
-" }}}
+" add runtimepathe .vim/bundle/* 
+call pathogen#runtime_append_all_bundles()
 
 "set nocompatible  " Use Vim defaults instead of 100% vi compatibility
 set backspace=indent,eol,start  " more powerful backspacing
