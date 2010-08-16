@@ -479,7 +479,10 @@ inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup() 
 
-
+" load ~/.vimrc.local
+if filereadable(expand('$HOME/.vimrc.local'))
+  source ~/.vimrc.local
+endif
 
 
 
