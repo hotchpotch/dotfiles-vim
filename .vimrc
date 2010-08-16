@@ -313,7 +313,7 @@ nnoremap <silent> gh :let @/=''<CR>
 set grepprg=internal
 
 " 検索レジストリに入ってる文字で現在のファイルを検索し、quickfix で開く
-" nnoremap <unique> g/ :exec ':vimgrep /' . getreg('/') . '/j %\|cwin'<CR>
+nnoremap <unique> g/ :exec ':vimgrep /' . getreg('/') . '/j %\|cwin'<CR>
 " G/ ではすべてのバッファ
 " nnoremap <unique> G/ :silent exec ':cexpr "" \| :bufdo vimgrepadd /' . getreg('/') . '/j %'<CR>\|:silent cwin<CR>
 
@@ -484,6 +484,33 @@ autocmd BufNewFile,BufRead */chromekeyconfig/* setlocal noexpandtab
 " debuglet
 autocmd BufWritePost */debuglet.js silent! execute '!debuglet.rb %'
 autocmd BufNewFile */debuglet.js silent! execute 'r!debuglet.rb'
+
+" NeoCompleCache.vim
+let g:neocomplcache_enable_at_startup = 1 
+let g:neocomplcache_enable_auto_select = 1 
+
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Use camel case completion.
+let g:neocomplcache_enable_camel_case_completion = 1
+" Use underbar completion.
+let g:neocomplcache_enable_underbar_completion = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3 
+
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>" 
+" <CR>: close popup and save indent.
+" inoremap <expr><CR>  neocomplcache#smart_close_popup() . (&indentexpr != '' " ? "\<C-f>\<CR>X\<BS>":"\<CR>")
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup() 
+
+
+
 
 
 
