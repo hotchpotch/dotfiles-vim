@@ -158,8 +158,8 @@ vnoremap j gj
 vnoremap k gk
 
 " + - でバッファウィンドウサイズ変更
-nnoremap + <C-W>+
-nnoremap - <C-W>-
+" nnoremap + <C-W>+
+" nnoremap - <C-W>-
 
 " 前回終了したカーソル行に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
