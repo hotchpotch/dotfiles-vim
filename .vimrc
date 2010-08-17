@@ -74,8 +74,7 @@ set showmatch
 "ステータスラインを常に表示
 set laststatus=2
 " ステータスラインの表示
-let g:gitCurrentBranch = ''
-set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff}%{g:gitCurrentBranch}%{']'}%y\ %F%=%l,%c%V%8P
+set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff}%{']'}%y%{fugitive#statusline()}\ %F%=%l,%c%V%8P
 " コマンドライン補間をシェルっぽく
 set wildmode=list:longest
 " バッファが編集中でもその他のファイルを開けるように
