@@ -311,11 +311,11 @@ let g:changelog_new_entry_format= '  * %c'
 
 " fuf.vim
 nnoremap <unique> <silent> <C-S> :FufBuffer!<CR>
-nnoremap <unique> <silent> ef :FufFile!<CR>
-nnoremap <silent> eub :FufBuffer!<CR>
-nnoremap <silent> eff :FufFile!<CR>
-nnoremap <silent> ee :FufFileWithCurrentBuffer!<CR>
+nnoremap <unique> <silent> eff :FufFile!<CR>
+nnoremap <silent> efb :FufBuffer!<CR>
+nnoremap <silent> efe :FufFileWithCurrentBuffer!<CR>
 nnoremap <silent> efm :FufMruFile!<CR>
+nnoremap <silent> efj :FufMruFileWithCurrentPwd!<CR>
 autocmd FileType fuf nmap <C-c> <ESC>
 let g:fuf_splitPathMatching = ' '
 let g:fuf_patternSeparator = ' '
@@ -333,8 +333,8 @@ let g:acp_behaviorHtmlOmniLength = -1
 let g:acp_behaviorRubyOmniMethodLength = -1
 let g:acp_behaviorRubyOmniSymbolLength = -1
 
-autocmd CmdwinEnter * AutoComplPopDisable
-autocmd CmdwinLeave * AutoComplPopEnable
+" autocmd CmdwinEnter * AutoComplPopDisable
+" autocmd CmdwinLeave * AutoComplPopEnable
 
 " Insert モード抜けたら nopaste
 autocmd InsertLeave * set nopaste

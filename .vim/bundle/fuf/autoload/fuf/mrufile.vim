@@ -36,6 +36,7 @@ endfunction
 "
 function fuf#mrufile#onInit()
   call fuf#defineLaunchCommand('FufMruFile', s:MODE_NAME, '""')
+  call fuf#defineLaunchCommand('FufMruFileWithCurrentPwd', s:MODE_NAME, 'substitute(fnamemodify(getcwd(), '':p''), $HOME, ''~'', '''') . '' '' ')
   augroup fuf#mrufile
     autocmd!
     autocmd BufEnter     * call s:updateInfo()
