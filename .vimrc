@@ -312,8 +312,8 @@ let g:changelog_new_entry_format= '  * %c'
 " fuf.vim
 nnoremap <unique> <silent> <C-S> :FufBuffer!<CR>
 nnoremap <unique> <silent> eff :FufFile!<CR>
-nnoremap <silent> efb :FufBuffer!<CR>
-nnoremap <silent> efe :FufFileWithCurrentBuffer!<CR>
+nnoremap <silent> es :FufBuffer!<CR>
+nnoremap <silent> ee :FufFileWithCurrentBuffer!<CR>
 nnoremap <silent> efm :FufMruFile!<CR>
 nnoremap <silent> efj :FufMruFileWithCurrentPwd!<CR>
 autocmd FileType fuf nmap <C-c> <ESC>
@@ -339,7 +339,7 @@ let g:acp_behaviorRubyOmniSymbolLength = -1
 " Insert モード抜けたら nopaste
 autocmd InsertLeave * set nopaste
 
-" ack.vim
+" ack.vim 
 let g:AckAllFiles=0
 
 " もとの ga を gA に割り当て
