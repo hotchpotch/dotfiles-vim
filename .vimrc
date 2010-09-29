@@ -315,7 +315,7 @@ nnoremap <unique> <silent> eff :FufFile!<CR>
 nnoremap <silent> es :FufBuffer!<CR>
 nnoremap <silent> ee :FufFileWithCurrentBuffer!<CR>
 nnoremap <silent> efm :FufMruFile!<CR>
-nnoremap <silent> efj :FufMruFileWithCurrentPwd!<CR>
+nnoremap <silent> efj :FufMruFileInCwd!<CR>
 autocmd FileType fuf nmap <C-c> <ESC>
 let g:fuf_splitPathMatching = ' '
 let g:fuf_patternSeparator = ' '
