@@ -202,7 +202,12 @@ nnoremap enp :set nopaste<CR>
 " yanktmp.vim
 noremap <silent> sy :call YanktmpYank()<CR>
 noremap <silent> sp :call YanktmpPaste_p()<CR>
-noremap <silent> sP :call YanktmpPaste_P()<CR>
+
+if has('macunix')
+  noremap <silent> sY :call system("pbcopy", @0)<CR>
+  noremap <silent> sP :r! pbpaste<CR>
+end
+
 
 " for rails
 autocmd BufNewFile,BufRead app/**/*.rhtml set fenc=utf-8
@@ -472,7 +477,6 @@ let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_enable_quick_match = 1
 let g:neocomplcache_enable_wildcard = 1
 
-
 nnoremap <silent> ent :NeoComplCacheCachingTags<CR>
 
 imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>" 
@@ -488,7 +492,7 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 " quickrun
 let g:quickrun_config = {
-      \   '*': {'runmode': 'async:remote:vimproc'},
+      \   '*': {'runmode': 'async:vimproc'},
       \ }
 
 
