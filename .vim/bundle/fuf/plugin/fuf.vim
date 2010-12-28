@@ -137,6 +137,7 @@ function s:initialize()
   call fuf#addMode('givencmd')
   call fuf#addMode('callbackfile')
   call fuf#addMode('callbackitem')
+  call fuf#addMode('script')
   "---------------------------------------------------------------------------
 endfunction
 

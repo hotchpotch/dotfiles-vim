@@ -309,6 +309,19 @@ function! Findgrep(arg)
 endfunction
 command! -nargs=1 Findgrep :call Findgrep(<f-args>)
 
+function! Ggrep(arg)
+  setlocal grepprg=git\ grep\ --no-color\ -n\ $*
+  silent execute ':grep '.a:arg
+  setlocal grepprg=git\ --no-pager\ submodule\ --quiet\ foreach\ 'git\ grep\ --full-name\ -n\ --no-color\ $*\ ;true'
+  silent execute ':grepadd '.a:arg
+  silent cwin
+  redraw!
+endfunction
+
+nnoremap <unique> gG :exec ':silent Ggrep ' . expand('<cword>')<CR>
+command! -nargs=1 -complete=buffer Gg call Ggrep(<q-args>)
+command! -nargs=1 -complete=buffer Ggrep call Ggrep(<q-args>)
+
 " changelog
 let g:changelog_username = "Yuichi Tateno"
 let g:changelog_dateformat = '== %Y-%m-%d'
@@ -324,6 +337,7 @@ nnoremap <silent> efj :FufMruFileInCwd!<CR>
 nnoremap <silent> eft :FufTag!<CR>
 nnoremap <silent> efT :FufTagWithCursorWord!<CR>
 autocmd FileType fuf nmap <C-c> <ESC>
+autocmd FileType fuf execute 'NeoComplCacheLock'
 let g:fuf_splitPathMatching = ' '
 let g:fuf_patternSeparator = ' '
 let g:fuf_modesDisable = ['mrucmd']
@@ -331,6 +345,8 @@ let g:fuf_mrufile_exclude = '\v\~$|\.bak$|\.swp|\.howm$'
 let g:fuf_mrufile_maxItem = 10000
 let g:fuf_enumeratingLimit = 20
 let g:fuf_previewHeight = 20
+
+command! FufGitGrep call fuf#script#launch('', 0, 'GitGrep>', 'bash', $HOME . '/bin/ggrep', 0)
 
 " Visualモードのpで上書きされたテキストをレジスタに入れない 
 vnoremap p "_c<C-r>"<ESC>
@@ -379,9 +395,6 @@ function! s:autoCloseQuickFix()
 endfunction
 
 autocmd QuickFixCmdPost * :call s:autoCloseQuickFix()
-
-" fugitive.vim
-nnoremap <unique> gG :exec ':silent Ggrep ' . expand('<cword>')<CR>
 
 " quickfix を閉じる
 nnoremap <unique> ec :cclose<CR>
