@@ -62,7 +62,7 @@ set hlsearch
 set noincsearch
 "タブ文字の表示
 set list
-set listchars=tab:>-,trail:\ 
+set listchars=tab:\ \ ,trail:\ 
 "set listchars=tab:\ \ ,trail:\ 
 "
 " コメント行が連続するときはコメントに
