@@ -114,6 +114,7 @@ nnoremap <C-]> g<C-]>
 if &term =~ "screen"
   " screen Buffer 切り替えで screen にファイル名を表示
   autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | silent! exe '!echo -n "kv:%\\"' | endif
+  autocmd VimLeave * silent! exe '!echo -n "kvim\\"'
 endif
 
 " command line で command window 開く
@@ -189,7 +190,7 @@ autocmd VimEnter,WinEnter * highlight PmenuSel ctermbg=12
 " encoding
 nnoremap <silent> eu :set fenc=utf-8<CR>
 nnoremap <silent> ee :set fenc=euc-jp<CR>
-nnoremap <silent> es :set fenc=cp932<CR>
+"nnoremap <silent> es :set fenc=cp932<CR>
 " encode reopen encoding
 nnoremap <silent> eru :e ++enc=utf-8 %<CR>
 nnoremap <silent> ere :e ++enc=euc-jp %<CR>
@@ -331,6 +332,7 @@ let g:changelog_new_entry_format= '  * %c'
 nnoremap <unique> <silent> <C-S> :FufBuffer!<CR>
 nnoremap <unique> <silent> eff :FufFile!<CR>
 nnoremap <silent> es :FufBuffer!<CR>
+nnoremap <silent> ed :FufBuffer!<CR>
 nnoremap <silent> ee :FufFileWithCurrentBuffer!<CR>
 nnoremap <silent> efm :FufMruFile!<CR>
 nnoremap <silent> efj :FufMruFileInCwd!<CR>
@@ -513,6 +515,16 @@ let g:quickrun_config = {
       \   '*': {'runmode': 'async:vimproc'},
       \ }
 
+" easymotion
+let g:EasyMotion_keys = 'asdfghjklqwertyuiopzxcvbnmASDFGHJKLQWERTYUIOPZXCVBNM'
+nnoremap <silent> mm :call EasyMotionW(0, 2)<CR>
+vnoremap <silent> mm :<C-U>call EasyMotionW(1, 2)<CR>
+nnoremap <silent> mM :call EasyMotionF(0, 2)<CR>
+vnoremap <silent> mM :<C-U>call EasyMotionF(1, 2)<CR>
+
+" highlight whitespace
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
 
 " load ~/.vimrc.local
 if filereadable(expand('$HOME/.vimrc.local'))
