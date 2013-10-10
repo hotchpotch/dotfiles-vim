@@ -173,11 +173,7 @@ if !has('win32')
   hi PmenuSbar ctermbg=0
 endif
 
-if !has('macunix')
-  highlight Visual ctermbg=0
-else
-  highlight Visual ctermbg=8
-end
+highlight Visual ctermbg=8
 
 highlight SpecialKey ctermbg=2
 highlight MatchParen cterm=none ctermbg=15 ctermfg=0
@@ -525,6 +521,13 @@ vnoremap <silent> mM :<C-U>call EasyMotionF(1, 2)<CR>
 " highlight whitespace
 highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
+
+" from
+" https://github.com/hashrocket/dotmatrix/commit/6c77175adc19e94594e8f2d6ec29371f5539ceeb
+command! -bar -range=% Trim :<line1>,<line2>s/\s\+$//e
+" Ruby HashSyntax 1.8 to 1.9
+command! -bar -range=% NotRocket :<line1>,<line2>s/:\(\w\+\)\s*=>/\1:/ge
+vnoremap <silent> gr :NotRocket<CR>
 
 " load ~/.vimrc.local
 if filereadable(expand('$HOME/.vimrc.local'))
