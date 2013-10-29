@@ -37,3 +37,9 @@
 [submodule ".vim/bundle/vim-bundler"]
 	path = .vim/bundle/vim-bundler
 	url = git://github.com/tpope/vim-bundler.git
+[submodule ".vim/bundle/funcoo.vim"]
+	path = .vim/bundle/funcoo.vim
+	url = https://github.com/rizzatti/funcoo.vim.git
+[submodule ".vim/bundle/dash.vim"]
+	path = .vim/bundle/dash.vim
+	url = https://github.com/rizzatti/dash.vim.git
