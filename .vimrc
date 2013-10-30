@@ -19,6 +19,8 @@ Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimproc'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
 
 " add runtimepathe .vim/bundle/* 
 call pathogen#runtime_append_all_bundles()
