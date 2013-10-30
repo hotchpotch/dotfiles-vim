@@ -140,3 +140,6 @@ set clipboard=unnamed
 " color
 highlight Pmenu guibg=gray30
 
+" for E303
+set directory=.,$TEMP,$TMP
+
