@@ -1,5 +1,25 @@
 scriptencoding utf-8
 
+set runtimepath+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'Shougo/neocomplcache'
+Bundle 'ciaranm/detectindent'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-haml'
+Bundle 'pangloss/vim-javascript'
+Bundle 'thinca/vim-quickrun'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tsaleh/vim-matchit'
+Bundle 'ecomba/vim-ruby-refactoring'
+Bundle 'tpope/vim-surround'
+Bundle 'Shougo/vimproc'
+Bundle 'Shougo/vimproc'
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+
 " add runtimepathe .vim/bundle/* 
 call pathogen#runtime_append_all_bundles()
 
@@ -533,7 +553,5 @@ vnoremap <silent> gr :NotRocket<CR>
 if filereadable(expand('$HOME/.vimrc.local'))
   source ~/.vimrc.local
 endif
-
-
 
 
